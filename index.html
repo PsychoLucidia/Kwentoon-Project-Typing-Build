@@ -93,8 +93,6 @@
         document.body.appendChild(warningDiv);
 
         warningDiv.style.display = "flex";
-
-
       }
       
       var buildUrl = "Build";
@@ -138,22 +136,57 @@
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
-        // This game is not intended to be played on mobile devices.
-        // Future support for mobile devices will be added in the future.
+        // showMobileWarning();
 
-        showMobileWarning();
+        // var unityContainer = document.querySelector("#unity-container");
+        // if (unityContainer) {
+        //   unityContainer.style.display = "none";
+        // }
 
-        var unityContainer = document.querySelector("#unity-container");
-        if (unityContainer) {
-          unityContainer.style.display = "none";
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.head.appendChild(meta);
+
+        const container = document.querySelector("#unity-container");
+
+        function resizeToAspectRatio() {
+          let aspectRatio = 5 / 4;
+
+          let screenWidth = window.innerWidth;
+          let screenHeight = window.innerHeight;
+
+          let screenAspectRatio = screenWidth / screenHeight;
+
+          let targetWidth, targetHeight;
+
+          if (screenAspectRatio > aspectRatio) {
+            targetHeight = screenHeight;
+            targetWidth = screenHeight * aspectRatio;
+          } else {
+            targetWidth = screenWidth;
+            targetHeight = screenWidth / aspectRatio;
+          }
+
+
+
+          canvas.style.width = targetWidth + "px";
+          canvas.style.height = targetHeight + "px";
+
+          container.style.width = targetWidth + "px";
+          container.style.height = targetHeight + "px";
         }
+
+        window.addEventListener("resize", resizeToAspectRatio);
+        resizeToAspectRatio();
+
+        runUnity();
+
+        config.matchWebGLToCanvasSize = false;
 
         // Mobile style: Fill the whole browser client area with the game canvas
         // Currently commented out for future support for mobile devices
 
-        // var meta = document.createElement('meta');
-        // meta.name = 'viewport';
-        // meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         // document.getElementsByTagName('head')[0].appendChild(meta);
         // document.querySelector("#unity-container").className = "unity-mobile";
         // canvas.className = "unity-mobile";
