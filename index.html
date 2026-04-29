@@ -91,6 +91,10 @@
         warningDiv.appendChild(message);
 
         document.body.appendChild(warningDiv);
+
+        warningDiv.style.display = "flex";
+
+
       }
       
       var buildUrl = "Build";
@@ -138,6 +142,11 @@
         // Future support for mobile devices will be added in the future.
 
         showMobileWarning();
+
+        var unityContainer = document.querySelector("#unity-container");
+        if (unityContainer) {
+          unityContainer.style.display = "none";
+        }
 
         // Mobile style: Fill the whole browser client area with the game canvas
         // Currently commented out for future support for mobile devices
