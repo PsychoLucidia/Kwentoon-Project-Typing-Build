@@ -128,7 +128,8 @@
 
       function showMobileWarning() {
         var warningDiv = document.createElement("div");
-        warningDiv.id = "unity-mobile-warning";
+        warningDiv.className = "unity-mobile-warning";
+        warningDiv.id = "warning-formatting";
 
         var logo = document.getElementsByClassName("logo-div-in-flex")[0];
         warningDiv.appendChild(logo);
@@ -178,7 +179,7 @@
         // unityFooter.removeChild(fullscreenButton);
 
         // Remove warning screen
-        var mobileWarning = document.getElementById("unity-mobile-warning");
+        var mobileWarning = document.getElementsByClassName("unity-mobile-warning")[0];
         mobileWarning.remove();
 
         // Maintain aspect ratio

@@ -1,12 +1,15 @@
 .logo-div-in-flex {
     display: flex;
     justify-content: center;
-    align-items: top;
+    align-items: center;
 
-    position: fixed;
+    flex-direction: column;
+
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 0;
 }
 
 #game-logo {
