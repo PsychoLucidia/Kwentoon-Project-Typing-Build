@@ -139,7 +139,11 @@
         warningDiv.appendChild(header);
 
         var message = document.createElement("p");
-        message.innerHTML = "This game is made for desktop and is not optimized for mobile devices.";
+
+        var stringMessage = "This game is made for desktop and is not optimized for mobile devices."
+         + " You may proceed to play on mobile with a keyboard connected.";
+
+        message.innerHTML = stringMessage;
         warningDiv.appendChild(message);
 
         var playAnywayBtn = document.createElement("button");
